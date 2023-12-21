@@ -118,4 +118,20 @@ bot.on('error', err => {
 //       bot.emit('error', err)
 //     })
 // })
+new CronJob('00 30 09 * * *', function () {
+    if (username) {
+        bot.sendMsg('早安', username)
+            .catch(err => {
+                bot.emit('send error', err);
+            });
+    }
+}, null, true, 'Asia/Shanghai');
 
+new CronJob('00 00 00 * * *', function () {
+    if (username) {
+        bot.sendMsg('晚安', username)
+            .catch(err => {
+                bot.emit('send error', err);
+            });
+    }
+}, null, true, 'Asia/Shanghai');
